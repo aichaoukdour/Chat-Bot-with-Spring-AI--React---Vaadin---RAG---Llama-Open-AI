@@ -16,9 +16,9 @@ public class ChatAiService {
     }
 
     public String ragChat(String question) {
-        return chatClient.prompt() chatClientRequest
-                .user(Question)
-                .call() CallResponseSpec
+        return chatClient.prompt() 
+                .user(question)
+                .call() 
                 .content();
     }
 

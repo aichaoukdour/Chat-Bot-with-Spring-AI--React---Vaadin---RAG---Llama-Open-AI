@@ -19,8 +19,8 @@ public class ChatRestController {
     }
 
     @GetMapping("/ask")
-    public String ask(@ String question) {
-        return new chatAiService.ragChat(question);
+    public String ask(String question) {
+        return chatAiService.ragChat(question);
     }
     
 }
