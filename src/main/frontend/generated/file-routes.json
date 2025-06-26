@@ -16,6 +16,12 @@
         "flowLayout": false,
         "params": {},
         "title": "Chat"
+      },
+      {
+        "route": "person",
+        "flowLayout": false,
+        "params": {},
+        "title": "Person"
       }
     ]
   }

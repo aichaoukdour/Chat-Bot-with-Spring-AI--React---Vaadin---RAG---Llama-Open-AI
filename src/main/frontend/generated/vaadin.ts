@@ -30,6 +30,26 @@ import '@vaadin/multi-select-combo-box/theme/lumo/vaadin-multi-select-combo-box.
 import '@vaadin/radio-group/theme/lumo/vaadin-radio-group.js';
 import '@vaadin/icons/vaadin-iconset.js';
 import '@vaadin/icon/vaadin-icon.js';
+import client from 'Frontend/generated/connect-client.default.js';
+let generatedId = 0;
+const copilotMiddleware: any = async function(
+  context: any,
+  next: any
+) {
+    const id = ++generatedId;
+    const requestData = { endpoint: context.endpoint, method: context.method, params: context.params, id };
+    (window as any).Vaadin.copilot.eventbus.emit('endpoint-request', requestData);
+
+    const response: Response = await next(context);
+    const status = response.status;
+    const text = await response.clone().text();
+    const responseData = { text, id, status };
+    (window as any).Vaadin.copilot.eventbus.emit('endpoint-response', responseData);
+    return response;
+};
+
+client.middlewares = [...client.middlewares, copilotMiddleware];
+
 import './vaadin-featureflags.js';
 
 import './index';

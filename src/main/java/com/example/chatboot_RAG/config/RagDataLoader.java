@@ -80,9 +80,15 @@ public class RagDataLoader {
                     throw new IllegalArgumentException("chunkOverlap must be non-negative and less than chunkSize: " + chunkOverlap);
                 }
 
-                // Use TokenTextSplitter with constructor for chunkSize and chunkOverlap
-                TokenTextSplitter textSplitter = new TokenTextSplitter();
-                List<Document> chunks = textSplitter.split(documents);
+    // Use TokenTextSplitter with constructor for chunkSize and chunkOverlap
+   TokenTextSplitter textSplitter = new TokenTextSplitter(
+    chunkSize,      // defaultChunkSize
+    chunkOverlap,   // minChunkSizeChars ou overlap
+    50,             // minChunkLengthToEmbed (exemple)
+    10000,          // maxNumChunks (exemple)
+    true            // keepSeparator
+);
+    List<Document> chunks = textSplitter.split(documents);
 
                 deleteExistingEmbeddings(jdbcTemplate, pdfPath);
                 vectorStore.add(chunks);

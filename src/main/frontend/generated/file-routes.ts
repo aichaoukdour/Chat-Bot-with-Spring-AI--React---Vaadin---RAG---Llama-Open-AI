@@ -3,10 +3,12 @@ import type { AgnosticRoute as AgnosticRoute_1 } from "@vaadin/hilla-file-router
 import * as Page_1 from "../views/@index.js";
 import * as Layout_1 from "../views/@layout.js";
 import * as Page_2 from "../views/chat.js";
+import * as Page_3 from "../views/person.js";
 const routes: readonly AgnosticRoute_1[] = [
     createRoute_1("", Layout_1, [
         createRoute_1("", Page_1),
-        createRoute_1("chat", Page_2)
+        createRoute_1("chat", Page_2),
+        createRoute_1("person", Page_3)
     ])
 ];
 export default routes;
