@@ -8,7 +8,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import com.example.chatboot_RAG.entities.Person;
-import com.example.chatboot_RAG.PersonRepository; // Add this import
 
 @SpringBootApplication
 public class ChatbootRagApplication {
